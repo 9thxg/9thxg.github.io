@@ -20,7 +20,7 @@ timezone: Asia/Seoul
 
 title: 9uTae's blog                          # the main title
 
-tagline: Front-end Dev   # it will display as the sub-title
+tagline: Front-end Developer   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Web Design, Web, Front-end, Graphic
