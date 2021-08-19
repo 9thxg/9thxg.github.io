@@ -14,7 +14,7 @@ order: 4
 ## 🔥 <b>Front-end Developer / MotionGraphic Designer</b>
 #### 🎉 <b>Birthday:</b> 1997.03.26
 #### ⛪ <b>University / Department:</b> 금오공과대학교 / 컴퓨터 공학과
-#### 📫 <b>Email:</b> ddr04099@gmail.com
-#### 🚀 <b>GitHub:</b> https://github.com/9utae
+#### 📫 <b>Email:</b> [ddr04099@gmail.com]()
+#### 🚀 <b>GitHub:</b> [https://github.com/9utae](https://github.com/9utae)
 
 ---
