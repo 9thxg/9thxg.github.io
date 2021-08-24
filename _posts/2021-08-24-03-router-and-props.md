@@ -1,5 +1,5 @@
 ---
-title: [Vue.js] Props 전달 및 Route 데이터 전달
+title: (Vue.js) Props 전달 및 Route 데이터 전달
 author: 9uTae
 date: 2021-08-24 17:10:00 UTC+09:00
 categories: [WebPrograming, Vue.js]
