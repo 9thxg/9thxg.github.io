@@ -4,7 +4,6 @@ author: 9uTae
 date: 2021-08-24 17:10:00 UTC+09:00
 categories: [WebPrograming, Vue.js]
 tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
-comments: true
 ---
 
 ## Vue.js Props 전달 및 Route 데이터 전달
@@ -26,14 +25,10 @@ comments: true
 
 - `Item-card 컴포넌트`는 `route`를 통해 해당 카드를 클릭하게 되면 `Detail-item 페이지`로 이동하게 되고 이때 `route`를 통해서 데이터(Params)도 함께 전달한다.
 
-    ```js
+    ```javascript
     <!--Item-card.vue-->
     <template>
-        <router-link :to="{
-            name: 'Item',
-            params: { number: this.number},
-            }"
-            style=text-decoration:none;>
+        <router-link :to="{name: 'Item', params: { number: this.number}}" style=text-decoration:none;>
             <v-card elevation="2">
                 <v-img height="250" />
                 <v-divider></v-divider>
