@@ -6,7 +6,7 @@ order: 4
 
 <!-- > **Note**: Add Markdown sntax content to file `_tabs/about.md` and it will show up on this page. -->
 
-<center><img src="/assets/img/profile.jpg" width="50%" height="50%"></center>
+![9uTae](/assets/img/profile.jpg){: .left}{: width="40%" height="40%"}
 
 ---
 
@@ -19,5 +19,5 @@ order: 4
 
 ---
 
-<img src="https://ghchart.rshah.org/29A7D9/9utae"/>
+<img src="https://ghchart.rshah.org/9utae"/>
 
