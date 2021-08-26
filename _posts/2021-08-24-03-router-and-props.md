@@ -1,5 +1,5 @@
 ---
-title: (Vue.js) Props 전달 및 Route 데이터 전달
+title: "[Vue.js] Props 전달 및 Route 데이터 전달"
 author: 9uTae
 date: 2021-08-24 17:10:00 UTC+09:00
 categories: [WebPrograming, Vue.js]
@@ -25,7 +25,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
 - `Item-card 컴포넌트`는 `route`를 통해 해당 카드를 클릭하게 되면 `Detail-item 페이지`로 이동하게 되고 이때 `route`를 통해서 데이터(Params)도 함께 전달한다.
 
-    ```javascript
+    ```vue
     <!--Item-card.vue-->
     <template>
         <router-link :to="{name: 'Item', params: { number: this.number}}" style=text-decoration:none;>
@@ -49,7 +49,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
     </script>
     ```
 
-    ```js
+    ```vue
     <!--Item-list.vue-->
     <template>
         <div class="cover">
@@ -79,7 +79,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 - Props는 부모 컴포넌트에서 자식 컴포넌트로 전달하는 값 또는 객체이다.
 - 부모 컴포넌트에서 Props를 자식 컴포넌트로 전달하기 위해선 단순히 자식 컴포넌트를 `import`하는 것 뿐만아니라 `<script>`부분에 `components`등록까지 해주어야한다.
 
-    ```js
+    ```vue
     <script>
         import ItemCard from "./Item-card.vue"
 
@@ -92,7 +92,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
 - Props를 전달하기 위해서 `v-bind`를 통해 데이터 바인딩해서 전달할 수 있다. `v-bind`는 생략이 가능하다.
     
-    ```js
+    ```vue
     <ItemCard v-bind:number='n' />
 
     or 
@@ -104,7 +104,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
 - Props는 `array`형태 또는 객체형태로 작성이 가능하다.
 
-    ```js
+    ```vue
     props: ['name', 'price']
 
     or
@@ -118,7 +118,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 - `array`형태를 사용하게되면 고차원형태의 작업을 하기 힘들다. 따라서 주로 객체형태로 작성하는 것이 용이하다.
 - 객체형태로 작성시에는 `props`의 값의 타입과 기본값, 필수조건을 설정할 수 있다.
 
-    ```js
+    ```vue
     props: {
         name: {
             type: String,
@@ -141,7 +141,7 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
 - 만약 여러개의 `props`를 전달하게 될 경우에 `v-bind`문법을 이용하여 다같이 보낼 수 있다.
     
-    ```js
+    ```vue
     따로 보내는 경우
     <ItemCard :name='a' :price=10000 />
 
@@ -154,6 +154,18 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 ### 3. Route 데이터 전달
 - Route를 통해서 데이터를 전달하는 방법은 `query`와 `params` 두 가지 방법이 있다.
 - `params`의 경우 router폴더 index.js에서 `props:true`를 설정해주게 되면 props에도 데이터가 전달된다.
+
+    ```js
+    const routes = [
+    {
+        path: '/item',
+        name: 'Item',
+        props: true, // props 설정
+        component: () => import('../views/Detail-item.vue')
+    },
+    ]
+    ```
+
 - 전달하는 방식은 태그에서 선언하는 부분과 함수에서 부분이 있다.
     ```js
     태그에서 전달
@@ -191,8 +203,8 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
     ```js
     // 그대로 사용하는 경우
-    <h2>데이터1: {{ $route.query.데이터1}}</h2>
-    <h2>데이터2: {{ $route.params.데이터2}}</h2>
+    <h2>데이터1: {{ $route.query.데이터1 }}</h2>
+    <h2>데이터2: {{ $route.params.데이터2 }}</h2>
 
     // props로 사용하는 경우(params)
     <h2>데이터1: {{ 데이터1 }}</h2>
