@@ -201,14 +201,14 @@ tags: [Vue.js, Vue, Vue-Cli, Props, Vue-Router]
 
 - `query`또는 `params`로 받은 값을 바로 사용할 수도 있고 `params`에서 `props`를 설정한 경우 `props`로도 사용가능하다.
 
-    ```js
+    ```html
     // 그대로 사용하는 경우
-    <h2>데이터1: {{ $route.query.데이터1 }}</h2>
-    <h2>데이터2: {{ $route.params.데이터2 }}</h2>
+    <h2>데이터1: {% raw %}{{ $route.query.데이터1 }}{% endraw %}</h2>
+    <h2>데이터2: {% raw %}{{ $route.params.데이터2 }}{% endraw %}</h2>
 
     // props로 사용하는 경우(params)
-    <h2>데이터1: {{ 데이터1 }}</h2>
-    <h2>데이터2: {{ 데이터2 }}</h2>
+    <h2>데이터1: {% raw %}{{ 데이터1 }}{% endraw %}</h2>
+    <h2>데이터2: {% raw %}{{ 데이터2 }}{% endraw %}</h2>
     ```
 
 <br>
