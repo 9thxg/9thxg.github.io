@@ -1,0 +1,679 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="[React.js] React.js 기초3" /><meta name="author" content="9uTae" /><meta property="og:locale" content="en" /><meta name="description" content="React.js 기초" /><meta property="og:description" content="React.js 기초" /><link rel="canonical" href="https://9thxg.github.io/posts/115-basic-react-3/" /><meta property="og:url" content="https://9thxg.github.io/posts/115-basic-react-3/" /><meta property="og:site_name" content="9uTae’s blog" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-02-04T17:30:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="[React.js] React.js 기초3" /><meta name="twitter:site" content="@none" /><meta name="twitter:creator" content="@9uTae" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"9uTae"},"dateModified":"2022-02-04T17:30:00+09:00","datePublished":"2022-02-04T17:30:00+09:00","description":"React.js 기초","headline":"[React.js] React.js 기초3","mainEntityOfPage":{"@type":"WebPage","@id":"https://9thxg.github.io/posts/115-basic-react-3/"},"url":"https://9thxg.github.io/posts/115-basic-react-3/"}</script><title>[React.js] React.js 기초3 | 9uTae's blog</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="9uTae's blog"><meta name="application-name" content="9uTae's blog"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/profile.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">9uTae's blog</a></div><div class="site-subtitle font-italic">Front-end Developer</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/9utae" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/none" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['ddr04099','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>[React.js] React.js 기초3</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>[React.js] React.js 기초3</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> 9uTae </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Feb 4, 2022, 5:30 PM +0900" >Feb 4<i class="unloaded">2022-02-04T17:30:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2523 words">14 min read</span></div></div><div class="post-content"><h2 id="reactjs-기초">React.js 기초</h2><p><br /></p><hr /><p><br /></p><h3 id="json-server-rest-api-구축">json-server, REST API 구축</h3><ul><li><p>만약 한부분만 변경되는 경우(단어의 뜻보기, 수정, 삭제) 해당 데이터만 수정해야하므로 따로 컴포넌트를 만들어 state를 관리하는것이 적합함</p><li><div class="table-wrapper"><table><tbody><tr><td>태그의 데이터 표시시에 boolean 변수와 &amp;&amp; or<td> <td>을 통해 표시 유무 결정 가능</table></div><li>json-server<ul><li>빠르고 쉽게 REST API 구축할수 있음<li>설치: <code class="language-plaintext highlighter-rouge">npm install -g json-server</code> 글로벌 플래그 사용<li>사용: <code class="language-plaintext highlighter-rouge">json-server --watch ./src/db/data.json --port 3002</code></ul><li>REST API<ul><li>uri 주소와 메소드로 CRUD(Create, Read, Update, Delete) 요청<ul><li>Create: POST<li>Read: GET<li>Update: PUT<li>Delete: DELETE</ul><li>uri와 메소드만 보고도 무슨 작업인지 쉽게 유추 가능</ul></ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="c1">// Word.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Word</span> <span class="p">({</span><span class="nx">word</span><span class="p">})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">isShow</span><span class="p">,</span> <span class="nx">setIsShow</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">isDone</span><span class="p">,</span> <span class="nx">setIsDone</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">word</span><span class="p">.</span><span class="nx">isDone</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nx">toggleShow</span><span class="p">(){</span>
+        <span class="nx">setIsShow</span><span class="p">(</span><span class="o">!</span><span class="nx">isShow</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">toggleDone</span><span class="p">(){</span>
+        <span class="nx">setIsDone</span><span class="p">(</span><span class="o">!</span><span class="nx">isDone</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">isDone</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">off</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">checkbox</span><span class="dl">"</span> <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="nx">isDone</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleDone</span><span class="p">}</span><span class="sr">/&gt;&lt;/</span><span class="nx">td</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">word</span><span class="p">.</span><span class="nx">eng</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">isShow</span> <span class="o">&amp;&amp;</span> <span class="nx">word</span><span class="p">.</span><span class="nx">kor</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleShow</span><span class="p">}</span><span class="o">&gt;</span>
+                    <span class="nx">뜻</span> <span class="p">{</span><span class="nx">isShow</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">숨기기</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">보기</span><span class="dl">"</span><span class="p">}</span>
+                <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">btn_del</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">삭제</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><br /></p><h3 id="useeffect-fetch">useEffect, fetch()</h3><ul><li>API의 값을 받아올 변수를 useState로 만들어주고 초기값은 빈배열로 설정<ul><li><code class="language-plaintext highlighter-rouge">const [days, setDays] = useState([]);</code></ul><li>useEffect Hook<ul><li>어떤 상태값이 바뀌었을 때 동작하는 함수를 작성할 수 있음<li>첫번째 매개변수는 함수<ul><li>함수가 호출되는 시점은 렌더링 결과가 실제 DOM에 반영된 직후, 컴포넌트가 사라지기 직전</ul><li>두번째 매개변수는 배열(의존성 배열)<ul><li>배열안에는 특정 변수를 넣어 해당변수가 변경될 때 함수를 호출<li>API호출과 같이 최초의 한번만 호출해야 한다면 빈배열 입력<li>의존성 배열을 입력하지 않고 사용했을 때 상태값이 변할 때마다 함수가 호출 되기 때문에 만약 함수가 무거운 함수라면 불필요한 호출로 인해 문제가 발생할 수 있음</ul></ul><li>fetch()<ul><li>API 비동기 통신을 위해 사용<li>괄호안에 API 경로를 넣어주면 promise가 반환됨<li><code class="language-plaintext highlighter-rouge">.then</code>을 통해 res의 promise를 반환 받고 다시 <code class="language-plaintext highlighter-rouge">.then</code>을 통해 data를 받아 state의 set함수를 통해 데이터를 받음<ul><li>이때 res는 json 형식이 아니기 때문에 <code class="language-plaintext highlighter-rouge">res.json()</code>을 통해 json으로 변환하여 반환 받음</ul></ul><li>useEffect 내부에서 특정값을 사용하면 의존성 배열에 특정값을 입력해야함<ul><li>의존성 배열에 입력되어 있지 않다면 특정값이 변경되어도 새로운 정보를 가져올 수 없고 의존성 배열에 입력되어 있다면 해당 값이 최신값이라는 것을 보장받을 수 있음</ul></ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="c1">// DayList.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">Link</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">DayList</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">days</span><span class="p">,</span> <span class="nx">setDays</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+    
+    <span class="nx">useEffect</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3002/days</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">setDays</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">},</span> <span class="p">[])</span>
+ 
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">list_day</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="nx">days</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">day</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="p">{</span><span class="s2">`/day/</span><span class="p">${</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span><span class="s2">`</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Day</span> <span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/Link</span><span class="err">&gt;
+</span>                    <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>                <span class="p">))}</span>
+            <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="c1">// Day.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">useParams</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Word</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./Word</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Day</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">day</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useParams</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">words</span><span class="p">,</span> <span class="nx">setWords</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+
+    <span class="nx">useEffect</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words?day=</span><span class="p">${</span><span class="nx">day</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">setWords</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">day</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="o">&lt;&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">Day</span> <span class="p">{</span><span class="nx">day</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">table</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">tbody</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="nx">words</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">word</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                    <span class="o">&lt;</span><span class="nx">Word</span> <span class="nx">word</span><span class="o">=</span><span class="p">{</span><span class="nx">word</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">word</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>                <span class="p">))}</span>
+            <span class="o">&lt;</span><span class="sr">/tbody</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/table</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
+</span><span class="p">}</span>
+</pre></table></code></div></div><p><br /></p><h3 id="customhook">CustomHook</h3><ul><li>만약 비슷한 형태로 useEffect를 여러 군데에서 사용한다면(동일한 로직이라면) customHook을 만들어 사용<li>hook 폴더를 만들어 customHook을 관리<li>customhook 이름은 앞에 use를 붙이고 카멜케이스로 사용(ex. useFetch)<li>바뀌는 부분은 매개변수로 받아오게 하고, 변수 이름은 공통적으로 사용할 수 있도록 다시 네이밍, 최종결과는 return을 통해 반환해줌</ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre><td class="rouge-code"><pre><span class="c1">// useFetch.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">useFetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">data</span><span class="p">,</span> <span class="nx">setData</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+    
+    <span class="nx">useEffect</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">setData</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">url</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// DayList.js</span>
+<span class="kd">const</span> <span class="nx">days</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3002/days</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// Day.js</span>
+<span class="kd">const</span> <span class="nx">words</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words?day=</span><span class="p">${</span><span class="nx">day</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</pre></table></code></div></div><p><br /></p><h3 id="rest-apiput-delete">REST API(PUT, DELETE)</h3><ul><li>fetch(“주소”, {객체})<ul><li>두 번째 매개변수 객체에 요청의 옵션을 지정함<ul><li>method: 요청 종류<li>header: 요청에 대한 설정 정보<li>body: 요청 내용</ul><li>header의 Content-Type은 ‘application/json’으로 지정<li>body는 JSON 형태로 넘겨주기 위해 바디 전체를 JSON.stringify() 감싸줌</ul><li>DELETE<ul><li>삭제시 실수가 있을 수 있기 때문에 window.confirm을 통해 확인해줌<li>DELETE 요청은 해당 요소를 삭제하는 것이기 때문에 header와 body가 필요 없음<li>실제 지워졋지만 화면 갱신이 되지 않았기 때문에 state를 사용하여 삭제되었을 때 화면을 갱신하도록 설정<li>삭제시 word의 id를 0으로 바꾸어주고(갱신을 위해) word의 id가 0일 때 null을 반환하도록 해주어야함<ul><li>null 반환을 하지 않으면 빈 테이블이 남아 있음</ul></ul><li>매개변수로 받은 변수 옆에 <code class="language-plaintext highlighter-rouge">: 새로운변수명</code>을 하면 새로운 변수명으로 할당할 수 있음<li><code class="language-plaintext highlighter-rouge">res.ok</code> : 요청이 정상적으로 처리됐을 때</ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre><td class="rouge-code"><pre><span class="c1">// Word.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Word</span> <span class="p">({</span><span class="na">word</span><span class="p">:</span> <span class="nx">w</span><span class="p">})</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">word</span><span class="p">,</span> <span class="nx">setWord</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">w</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">isShow</span><span class="p">,</span> <span class="nx">setIsShow</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">isDone</span><span class="p">,</span> <span class="nx">setIsDone</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">word</span><span class="p">.</span><span class="nx">isDone</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nx">toggleShow</span><span class="p">(){</span>
+        <span class="nx">setIsShow</span><span class="p">(</span><span class="o">!</span><span class="nx">isShow</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">toggleDone</span><span class="p">(){</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words/</span><span class="p">${</span><span class="nx">word</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">PUT</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">headers</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">body</span> <span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+                <span class="p">...</span><span class="nx">word</span><span class="p">,</span>
+                <span class="na">isDone</span> <span class="p">:</span> <span class="o">!</span><span class="nx">isDone</span><span class="p">,</span>
+            <span class="p">}),</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+                <span class="nx">setIsDone</span><span class="p">(</span><span class="o">!</span><span class="nx">isDone</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">del</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="dl">"</span><span class="s2">삭제 하시겠습니까?</span><span class="dl">"</span><span class="p">)){</span>
+            <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words/</span><span class="p">${</span><span class="nx">word</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">DELETE</span><span class="dl">'</span><span class="p">,</span>
+            <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+                    <span class="nx">setWord</span><span class="p">({</span><span class="na">id</span> <span class="p">:</span> <span class="mi">0</span><span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">word</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">isDone</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">off</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">checkbox</span><span class="dl">"</span> <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="nx">isDone</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleDone</span><span class="p">}</span><span class="sr">/&gt;&lt;/</span><span class="nx">td</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">word</span><span class="p">.</span><span class="nx">eng</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">isShow</span> <span class="o">&amp;&amp;</span> <span class="nx">word</span><span class="p">.</span><span class="nx">kor</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">toggleShow</span><span class="p">}</span><span class="o">&gt;</span>
+                    <span class="nx">뜻</span> <span class="p">{</span><span class="nx">isShow</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">숨기기</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">보기</span><span class="dl">"</span><span class="p">}</span>
+                <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">btn_del</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">del</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">삭제</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/td</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/tr</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><br /></p><h3 id="post-useref-usenavigate">POST, useRef, useNavigate</h3><ul><li>form 태그로 감싸진 버튼은 눌렸을 때 새로고침이 실행됨<ul><li>새로고침을 비활성하기 위해 onSubmit할 함수에 event를 받아 <code class="language-plaintext highlighter-rouge">e.preventDefault();</code> 함수를 호출</ul><li>input 창에 적힌 값들을 얻기위해 useRef Hook 사용<ul><li>useRef<ul><li>DOM에 접근할 수 있게 해줌<li>스크롤 위치나 포커스 주는 것 등을 사용할 때 사용<li><code class="language-plaintext highlighter-rouge">const anyRef = useRef();</code><li>각 태그에 ref속성에 변수를 연결<li>해당 값을 사용할려면 <code class="language-plaintext highlighter-rouge">anyRef.current.value</code>를 사용(current:해당 요소 접근, value:해당 요소 값)</ul></ul><li>useNavigate<ul><li>새로운 창으로 이동하기 위해 사용<li><code class="language-plaintext highlighter-rouge">const navigate = useNavigate();</code> 와 같이 선언<li><code class="language-plaintext highlighter-rouge">navigate('경로');</code> 사용</ul></ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+</pre><td class="rouge-code"><pre><span class="c1">// CreateWord.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useNavigate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">useFetch</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../hook/useFetch</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">CreateWord</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">days</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3002/days</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nx">useNavigate</span><span class="p">();</span>
+
+    <span class="kd">function</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words/`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">headers</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">body</span> <span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+                <span class="na">eng</span> <span class="p">:</span> <span class="nx">engRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                <span class="na">kor</span> <span class="p">:</span> <span class="nx">korRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                <span class="na">day</span> <span class="p">:</span> <span class="nx">dayRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                <span class="na">isDone</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="p">}),</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">추가되었습니다 !</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">navigate</span><span class="p">(</span><span class="s2">`/day/</span><span class="p">${</span><span class="nx">dayRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">engRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">korRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">dayRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Eng</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">english</span><span class="dl">"</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">engRef</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Kor</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">영어</span><span class="dl">"</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">korRef</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Day</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">dayRef</span><span class="p">}</span><span class="o">&gt;</span>
+                    <span class="p">{</span><span class="nx">days</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="nx">day</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                        <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span><span class="o">&gt;</span>
+                            <span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span>
+                        <span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>                    <span class="p">))}</span>
+                <span class="o">&lt;</span><span class="sr">/select</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">저장</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">};</span>
+
+</pre></table></code></div></div><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre><td class="rouge-code"><pre><span class="c1">// CreateDay.js</span>
+<span class="k">import</span> <span class="nx">useFetch</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../hook/useFetch</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">useNavigate</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">CreateDay</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">days</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3002/days</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nx">useNavigate</span><span class="p">();</span>
+
+    <span class="kd">function</span> <span class="nx">addDay</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/days/`</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">headers</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="na">body</span> <span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+                <span class="na">day</span> <span class="p">:</span> <span class="nx">days</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="p">}),</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">추가되었습니다 !</span><span class="dl">"</span><span class="p">);</span>
+                <span class="nx">navigate</span><span class="p">(</span><span class="s2">`/`</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">현재일수</span> <span class="p">:</span> <span class="p">{</span><span class="nx">days</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="nx">일</span><span class="o">&lt;</span><span class="sr">/h2</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">addDay</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Day</span> <span class="nx">추가</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">};</span>
+
+</pre></table></code></div></div><p><br /></p><h3 id="최적화">최적화</h3><ul><li>사용자 네트워크 환경에 따라 데이터 로딩이 길어질 수 있기 때문에 로딩 페이지나 로딩텍스트를 처리 해줌<li>개발자 도구 -&gt; 네트워크 탭 -&gt; 네트워크 상태 에서 slow3G를 설정해주면 느린 네트워크를 설정 가능<li>API를 통해 상태값을 불러오는 경우라면 상태값의 길이가 0 일 때 로딩중이기 때문에 if문을 사용하여 로딩 처리 가능<li><p>길이값을 이용하여 JSX 태그안에서도 사용가능</p><li>요청중에 게속해서 요청을 보낼 수 있다면 의도치 않은 결과가 나올 수 있기 때문에 요청 통신 중에는 요청을 보낼 수 없도록 설정해야함<ul><li>로딩 state를 만들고 submit과 버튼에 적용</ul></ul><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="c1">// DayList.js</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">days</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span><span class="p">}</span>
+</pre></table></code></div></div><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="c1">// Day.js</span>
+<span class="p">{</span><span class="nx">words</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="err">}
+</span></pre></table></code></div></div><div lang="js" class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+</pre><td class="rouge-code"><pre><span class="c1">// CreateWord.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useRef</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useNavigate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react-router-dom</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">useFetch</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">../hook/useFetch</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">CreateWord</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">days</span> <span class="o">=</span> <span class="nx">useFetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3002/days</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">isLoading</span><span class="p">,</span> <span class="nx">setIsLoading</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">navigate</span> <span class="o">=</span> <span class="nx">useNavigate</span><span class="p">();</span>
+
+    <span class="kd">function</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isLoading</span><span class="p">){</span>
+            <span class="nx">setIsLoading</span><span class="p">(</span><span class="o">!</span><span class="nx">isLoading</span><span class="p">);</span>
+            <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:3002/words/`</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">method</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">headers</span> <span class="p">:</span> <span class="p">{</span>
+                    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="na">body</span> <span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+                    <span class="na">eng</span> <span class="p">:</span> <span class="nx">engRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                    <span class="na">kor</span> <span class="p">:</span> <span class="nx">korRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                    <span class="na">day</span> <span class="p">:</span> <span class="nx">dayRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span>
+                    <span class="na">isDone</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="p">}),</span>
+            <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">ok</span><span class="p">){</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">추가되었습니다 !</span><span class="dl">"</span><span class="p">);</span>
+                    <span class="nx">setIsLoading</span><span class="p">(</span><span class="o">!</span><span class="nx">isLoading</span><span class="p">);</span>
+                    <span class="nx">navigate</span><span class="p">(</span><span class="s2">`/day/</span><span class="p">${</span><span class="nx">dayRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">const</span> <span class="nx">engRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">korRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">dayRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Eng</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">english</span><span class="dl">"</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">engRef</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Kor</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span> <span class="nx">placeholder</span><span class="o">=</span><span class="dl">"</span><span class="s2">영어</span><span class="dl">"</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">korRef</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">input_area</span><span class="dl">"</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span><span class="nx">Day</span><span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">dayRef</span><span class="p">}</span><span class="o">&gt;</span>
+                    <span class="p">{</span><span class="nx">days</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="nx">day</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                        <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span><span class="o">&gt;</span>
+                            <span class="p">{</span><span class="nx">day</span><span class="p">.</span><span class="nx">day</span><span class="p">}</span>
+                        <span class="o">&lt;</span><span class="sr">/option</span><span class="err">&gt;
+</span>                    <span class="p">))}</span>
+                <span class="o">&lt;</span><span class="sr">/select</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">button</span>
+            <span class="nx">style</span><span class="o">=</span>
+            <span class="o">&gt;</span><span class="p">{</span><span class="nx">isLoading</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">Saving...</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">저장</span><span class="dl">"</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/form</span><span class="err">&gt;
+</span>    <span class="p">)</span>
+<span class="p">};</span>
+
+</pre></table></code></div></div><p><br /></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/webprograming/'>WebPrograming</a>, <a href='/categories/react-js/'>React.js</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/react/" class="post-tag no-text-decoration" >react</a> <a href="/tags/react-js/" class="post-tag no-text-decoration" >React.js</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=[React.js] React.js 기초3 - 9uTae's blog&url=https://9thxg.github.io/posts/115-basic-react-3/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=[React.js] React.js 기초3 - 9uTae's blog&u=https://9thxg.github.io/posts/115-basic-react-3/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=[React.js] React.js 기초3 - 9uTae's blog&url=https://9thxg.github.io/posts/115-basic-react-3/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/150-til/">[TIL] 22.03.21</a><li><a href="/posts/125-ui-tip/">[UI Design] UI 디자인 기획 노하우</a><li><a href="/posts/119-til/">[TIL] 22.02.08</a><li><a href="/posts/114-til/">[TIL] 22.02.03</a><li><a href="/posts/112-til/">[TIL] 22.01.28</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/til/">TIL</a> <a class="post-tag" href="/tags/%EC%88%98%EC%97%85/">수업</a> <a class="post-tag" href="/tags/webprograming/">WebPrograming</a> <a class="post-tag" href="/tags/javascript/">JavaScript</a> <a class="post-tag" href="/tags/js/">JS</a> <a class="post-tag" href="/tags/react-js/">React.js</a> <a class="post-tag" href="/tags/react/">react</a> <a class="post-tag" href="/tags/css/">CSS</a> <a class="post-tag" href="/tags/css/">css</a> <a class="post-tag" href="/tags/html/">HTML</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/111-basic-react/"><div class="card-body"> <span class="timeago small" >Jan 28<i class="unloaded">2022-01-28T17:30:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[React.js] React.js 기초</h3><div class="text-muted small"><p> React.js 기초 React 프로젝트 시작 및 구성 npx create-react-app 프로젝트명 프로젝트명으로 폴더를 만들고 프로젝트를 생성함 npx: npm에 올라가 있는 패키지를 바로 실행해서 설치시켜주는 도구 React 프로젝트 구성 node.modul...</p></div></div></a></div><div class="card"> <a href="/posts/113-basic-react-2/"><div class="card-body"> <span class="timeago small" >Feb 3<i class="unloaded">2022-02-03T17:30:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[React.js] React.js 기초2</h3><div class="text-muted small"><p> React.js 기초 이벤트 처리(Handling Events) 컴포넌트에서 return전 미리 함수를 만들어서 사용하는 방법 버튼에 onClick 또는 다른태그의 onChage와 같은 속성과 함수를 엮어 사용 {중괄호} 사이에 함수명을 넣어서 사용 이때 함수명 옆에 ...</p></div></div></a></div><div class="card"> <a href="/posts/117-basic-react-ts/"><div class="card-body"> <span class="timeago small" >Feb 7<i class="unloaded">2022-02-07T17:30:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>[React.js] React.js TypeScript</h3><div class="text-muted small"><p> React.js TypeScript 기초 TypeScript TypeScript는 정적 타입을 지원하여 명확한 코드 기술과 가독성을 높여 개발속도를 향상 시킬 수 있음 프로퍼티 확인이 쉬움 오타나 없는 프로퍼티를 쓰는 실수를 줄임 프로퍼티 ...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/114-til/" class="btn btn-outline-primary" prompt="Older"><p>[TIL] 22.02.03</p></a> <a href="/posts/116-til/" class="btn btn-outline-primary" prompt="Newer"><p>[TIL] 22.02.04</p></a></div><div id="disqus" class="pt-2 pb-2"><p class="text-center text-muted small pb-5"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> const options = { scriptUrl: '//9uTae.disqus.com/embed.js', disqusConfig: function() { this.page.title = '[React.js] React.js 기초3'; this.page.url = 'https://9thxg.github.io/posts/115-basic-react-3/'; this.page.identifier = '/posts/115-basic-react-3/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://github.com/9utae">Gu Tae Hun</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/til/">TIL</a> <a class="post-tag" href="/tags/%EC%88%98%EC%97%85/">수업</a> <a class="post-tag" href="/tags/webprograming/">WebPrograming</a> <a class="post-tag" href="/tags/javascript/">JavaScript</a> <a class="post-tag" href="/tags/js/">JS</a> <a class="post-tag" href="/tags/react-js/">React.js</a> <a class="post-tag" href="/tags/react/">react</a> <a class="post-tag" href="/tags/css/">CSS</a> <a class="post-tag" href="/tags/css/">css</a> <a class="post-tag" href="/tags/html/">HTML</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://9thxg.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>
